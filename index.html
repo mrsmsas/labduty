@@ -14,13 +14,25 @@
 <style>
   html,body{margin:0;height:100%;background:#f3f4f6;font-family:system-ui,sans-serif}
   iframe{position:fixed;inset:0;width:100%;height:100%;border:0}
-  #muat{position:fixed;inset:0;display:grid;place-items:center;color:#5b6475;text-align:center}
+  #muat{position:fixed;inset:0;display:grid;place-items:center;color:#5b6475;text-align:center;z-index:1;padding:0 20px}
+  #muat p{margin:12px 0 0}
+  #muat a{color:#1e40af;font-weight:600}
+  #bantuan{display:none;max-width:340px;margin:20px auto 0;padding:14px 16px;background:#fff;border:1px solid #d1d5db;border-radius:10px;font-size:14px;line-height:1.5;text-align:left}
   #muat img{width:96px;height:96px;object-fit:contain}
 </style>
 </head>
 <body>
+<iframe id="app" src="https://script.google.com/macros/s/AKfycbzmzxlwmLrgJdaYJ1TtXZr_Flin_nP2oLeeiBrleQovNRt0HLOW-ZH7spI1fs4iMOz_ZA/exec" title="Lab Duty MRSM SAS" allow="clipboard-write"></iframe>
 <div id="muat"><div><img src="logo.png" alt="MRSM SAS"><p>Memuatkan Lab Duty…</p>
-  <p style="font-size:13px">Jika tidak dipaparkan, <a href="https://script.google.com/macros/s/AKfycbzmzxlwmLrgJdaYJ1TtXZr_Flin_nP2oLeeiBrleQovNRt0HLOW-ZH7spI1fs4iMOz_ZA/exec">buka di sini</a>.</p></div></div>
-<iframe src="https://script.google.com/macros/s/AKfycbzmzxlwmLrgJdaYJ1TtXZr_Flin_nP2oLeeiBrleQovNRt0HLOW-ZH7spI1fs4iMOz_ZA/exec" title="Lab Duty MRSM SAS" allow="clipboard-write" onload="document.getElementById('muat').style.display='none'"></iframe>
+  <div id="bantuan"><strong>Lambat dimuatkan?</strong><br>
+    1. <a href="https://script.google.com/macros/s/AKfycbzmzxlwmLrgJdaYJ1TtXZr_Flin_nP2oLeeiBrleQovNRt0HLOW-ZH7spI1fs4iMOz_ZA/exec" target="_blank" rel="noopener">Buka Lab Duty terus</a><br>
+    2. Jika masih tidak keluar, mulakan semula pelayar, atau buka pautan ini dalam tetingkap Incognito / pelayar lain.</div>
+</div></div>
+<script>
+  // #muat berada di atas iframe supaya pautannya boleh diklik; dibuang sebaik aplikasi siap dimuat.
+  var muat = document.getElementById('muat');
+  var lambat = setTimeout(function () { document.getElementById('bantuan').style.display = 'block'; }, 10000);
+  document.getElementById('app').addEventListener('load', function () { clearTimeout(lambat); muat.style.display = 'none'; });
+</script>
 </body>
 </html>
